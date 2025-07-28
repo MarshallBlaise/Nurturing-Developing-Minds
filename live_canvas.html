@@ -1,0 +1,221 @@
+import React, { useEffect } from 'react';
+import { motion } from 'framer-motion';
+
+export default function App() {
+  useEffect(() => {
+    document.title = 'Nurturing Developing Minds';
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-pastel-blue to-white text-gray-900">
+      <Navbar />
+      <Home />
+      <Services />
+      <Contact />
+      <About />
+      <Careers />
+      <Footer />
+    </div>
+  );
+}
+
+function Navbar() {
+  const links = ['Home', 'Services', 'Contact', 'About', 'Careers'];
+  return (
+    <motion.nav
+      initial={{ y: -50, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6 }}
+      className="fixed w-full bg-white/90 backdrop-blur-md shadow-md z-50 border-b border-[#551a86]"
+    >
+      <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div className="text-xl font-bold text-gray-900">Nurturing Developing Minds</div>
+        <div className="space-x-6">
+          {links.map((link) => (
+            <a
+              key={link}
+              href={`#${link.toLowerCase()}`}
+              className="text-gray-900 hover:text-[#551a86] transition"
+            >
+              {link}
+            </a>
+          ))}
+        </div>
+      </div>
+    </motion.nav>
+  );
+}
+
+function SectionWrapper({ id, children }) {
+  return (
+    <section id={id} className="pt-24 pb-16 max-w-4xl mx-auto px-6">
+      {children}
+    </section>
+  );
+}
+
+function Home() {
+  return (
+    <SectionWrapper id="home">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.2 }}
+        className="text-center space-y-4"
+      >
+        <h1 className="text-4xl md:text-6xl font-semibold">Welcome to Nurturing Developing Minds</h1>
+        <p className="text-lg md:text-xl text-gray-700">
+          Empowering infants and toddlers to reach their fullest potential through play-based learning
+        </p>
+        <a
+          href="#contact"
+          className="inline-block mt-4 px-6 py-3 bg-[#551a86] text-white rounded-full font-medium hover:scale-105 transform transition"
+        >
+          Book a Tour
+        </a>
+      </motion.div>
+    </SectionWrapper>
+  );
+}
+
+function Services() {
+  const services = [
+    'One-on-One Developmental Therapy',
+    'Group Sessions',
+    'Parent Coaching',
+    'Speech Therapy (coming soon)',
+    'Occupational Therapy (coming soon)',
+    'Physical Therapy (coming soon)',
+  ];
+
+  return (
+    <SectionWrapper id="services">
+      <h2 className="text-3xl font-semibold text-center mb-8">Our Services</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {services.map((service, idx) => (
+          <motion.div
+            key={idx}
+            whileHover={{ scale: 1.03 }}
+            className="p-6 bg-white rounded-2xl shadow-md hover:shadow-lg transition border-l-4 border-[#551a86]"
+          >
+            <h3 className="text-xl font-medium mb-2 text-gray-900">{service}</h3>
+            <p className="text-gray-600">
+              {service.includes('coming soon')
+                ? 'Stay tuned for updates on this upcoming service offering.'
+                : 'Expert-led sessions tailored to each child’s developmental needs.'}
+            </p>
+          </motion.div>
+        ))}
+      </div>
+    </SectionWrapper>
+  );
+}
+
+function Contact() {
+  return (
+    <SectionWrapper id="contact">
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="max-w-md mx-auto space-y-4"
+      >
+        <h2 className="text-3xl font-semibold text-center">Book a Call</h2>
+        <p className="text-center text-gray-700">
+          Schedule a call with our founder, Stacey Richardson-Ellis, to discuss your child’s development and
+          how we can support your family’s needs.
+        </p>
+        <form className="space-y-4">
+          <input
+            type="text"
+            placeholder="Your Name"
+            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#551a86]"
+          />
+          <input
+            type="email"
+            placeholder="Your Email"
+            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#551a86]"
+          />
+          <textarea
+            placeholder="Preferred Call Times or Questions"
+            className="w-full px-4 py-2 border rounded-lg h-32 focus:outline-none focus:ring-2 focus:ring-[#551a86]"
+          />
+          <button
+            type="submit"
+            className="w-full py-3 bg-[#551a86] text-white rounded-full font-medium hover:scale-105 transition"
+          >
+            Schedule Call
+          </button>
+        </form>
+      </motion.div>
+    </SectionWrapper>
+  );
+}
+
+function About() {
+  return (
+    <SectionWrapper id="about">
+      <motion.div
+        whileInView={{ x: 0, opacity: 1 }}
+        initial={{ x: -100, opacity: 0 }}
+        transition={{ duration: 0.8 }}
+        className="space-y-4"
+      >
+        <h2 className="text-3xl font-semibold">About Us</h2>
+        <p className="text-gray-700">
+          Founded by Stacey Richardson-Ellis, Nurturing Developing Minds LLC brings over 28 years of
+          dedicated experience in early childhood development and 24 years as a licensed developmental
+          therapist. Stacey holds a Master’s in Early Childhood Intervention and is certified in infant
+          mental health and play-based therapy.
+        </p>
+        <ul className="list-disc list-inside text-gray-700">
+          <li>28 years working with infants and toddlers</li>
+          <li>24 years as a licensed developmental therapist</li>
+          <li>Master’s in Early Childhood Intervention</li>
+          <li>Certified in Infant Mental Health & Play-Based Therapy</li>
+        </ul>
+        <p className="text-gray-700 font-medium">
+          Location: 1025 Douglas Ave, Flossmoor, IL 60422
+        </p>
+      </motion.div>
+    </SectionWrapper>
+  );
+}
+
+function Careers() {
+  return (
+    <SectionWrapper id="careers">
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="space-y-4"
+      >
+        <h2 className="text-3xl font-semibold text-center">Careers</h2>
+        <p className="text-gray-700 text-center">
+          Join our dedicated team at Nurturing Developing Minds! We’re always looking for passionate
+          early-childhood professionals. If you’re interested in making a difference in children’s lives,
+          we'd love to hear from you.
+        </p>
+        <div className="text-center">
+          <a
+            href="mailto:careers@ndm-llc.com"
+            className="inline-block mt-2 px-6 py-3 border-2 border-[#551a86] text-[#551a86] rounded-full font-medium hover:bg-[#551a86] hover:text-white transform transition"
+          >
+            Apply Now
+          </a>
+        </div>
+      </motion.div>
+    </SectionWrapper>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="bg-[#551a86] text-white py-6">
+      <div className="max-w-6xl mx-auto px-6 text-center">
+        <p>&copy; {new Date().getFullYear()} Nurturing Developing Minds LLC. All rights reserved.</p>
+      </div>
+    </footer>
+  );
+}
