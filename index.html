@@ -1,21 +1,23 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 
 export default function App() {
-  useEffect(() => {
-    document.title = 'Nurturing Developing Minds';
-  }, []);
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-pastel-blue to-white text-gray-900">
-      <Navbar />
-      <Home />
-      <Services />
-      <Contact />
-      <About />
-      <Careers />
-      <Footer />
-    </div>
+    <>
+      <Helmet>
+        <title>Nurturing Developing Minds</title>
+      </Helmet>
+      <div className="min-h-screen bg-gradient-to-b from-pastel-blue to-white text-gray-900">
+        <Navbar />
+        <Home />
+        <Services />
+        <Contact />
+        <About />
+        <Careers />
+        <Footer />
+      </div>
+    </>
   );
 }
 
@@ -134,12 +136,12 @@ function Contact() {
           <input
             type="email"
             placeholder="Your Email"
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#551a86]"
+            className="w-full px-4 py-2	border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#551a86]"
           />
           <textarea
             placeholder="Preferred Call Times or Questions"
-            className="w-full px-4 py-2 border rounded-lg h-32 focus:outline-none focus:ring-2 focus:ring-[#551a86]"
-          ></textarea>
+            className="w-full px-4 py-2	border rounded-lg h-32 focus:outline-none focus:ring-2 focus:ring-[#551a86]"
+          />
           <button
             type="submit"
             className="w-full py-3 bg-[#551a86] text-white rounded-full font-medium hover:scale-105 transition"
@@ -200,4 +202,22 @@ function Careers() {
         <div className="text-center">
           <a
             href="mailto:careers@ndm-llc.com"
-            className="inline-block mt-2 px-6 py-3 border-2 border-[#551a86] text-[#551a86] rounded-full font-medium hover:bg-[#551a86] hover
+            className="inline-block mt-2 px-6 py-3 border-2 border-[#551a86]	text-[#551a86] rounded-full font-medium hover:bg-[#551a86] hover:text-white transform transition"
+          >
+            Apply Now
+          </a>
+        </div>
+      </motion.div>
+    </SectionWrapper>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="bg-[#551a86] text-white py-6">
+      <div className="max-w-6xl mx-auto px-6 text-center">
+        <p>&copy; {new Date().getFullYear()} Nurturing Developing Minds LLC. All rights reserved.</p>
+      </div>
+    </footer>
+  );
+}
